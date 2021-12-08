@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEST</title>
+  </head>
+  <body>
+    <h1>Hello world</h1>
+    <button id="button">What does this do?</button>
+    <ul id="list"></ul>
+    <script>
+      const btn = document.getElementById("button");
+      btn.addEventListener("click", function (event) {
+        console.log("hey");
+        fetch("/trigger", {
+          method: "POST",
+          body: JSON.stringify({
+            testing: 1,
+          }),
+        }).then((v) => {
+          var ul = document.getElementById("list");
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode("something hopefully?"));
+          ul.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>
