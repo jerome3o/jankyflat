@@ -1,6 +1,6 @@
 FROM golang:buster
 
-RUN apt update && apt-get install -y libasound2-dev pkg-config
+RUN apt-get update && apt-get install -y libasound2-dev pkg-config
 
 WORKDIR /app
 
