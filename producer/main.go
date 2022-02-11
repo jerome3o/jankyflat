@@ -15,18 +15,12 @@ type result struct {
 func main() {
 	router := gin.Default()
 	router.StaticFile("/", "index.html")
-	router.POST("/trigger", Trigger)
+	router.GET("/trigger", Trigger)
 
 	router.Run("0.0.0.0:8080")
 }
 
 func Trigger(c *gin.Context) {
-	var res result
-
-	if err := c.BindJSON(&res); err != nil {
-		return
-	}
-
 	sendMessageToQueue()
 }
 
